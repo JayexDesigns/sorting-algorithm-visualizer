@@ -43,7 +43,7 @@ const draw = async (elements) => {
         ctx.arc(
             i*separationX,
             innerHeight-elements[i]*separationY,
-            1,
+            1.5,
             0, Math.PI*2, true
         );
         ctx.fill();
@@ -58,7 +58,7 @@ const draw = async (elements) => {
 var state = {sorting: false};
 var elements;
 const start = () => {
-    elements = createArray(100);
+    elements = createArray(250);
     elements = shuffleArray(elements);
     draw(elements);
 }
@@ -75,6 +75,10 @@ for (let i = 0; i < buttons.length; ++i) {
             case "BUBBLE":
                 state.sorting = true;
                 bubbleSort(state, elements, draw);
+                break;
+            case "INSERTION":
+                state.sorting = true;
+                insertionSort(state, elements, draw);
                 break;
         }
     });
