@@ -57,11 +57,16 @@ const draw = async (elements) => {
 
 var state = {sorting: false};
 var elements;
-const start = () => {
-    elements = createArray(250);
+const start = (quantity) => {
+    elements = createArray(quantity);
     elements = shuffleArray(elements);
     draw(elements);
 }
+
+var elementsInput = document.getElementById("element-quantity");
+elementsInput.addEventListener('change', () => {
+    start(parseInt(elementsInput.value));
+});
 
 var buttons = document.getElementsByClassName("control-button");
 for (let i = 0; i < buttons.length; ++i) {
@@ -95,7 +100,7 @@ for (let i = 0; i < buttons.length; ++i) {
 const resizeCanvas = () => {
     canvas.width = innerWidth;
     canvas.height = innerHeight;
-    start();
+    start(parseInt(document.getElementById("element-quantity").value));
 }
 resizeCanvas();
 window.addEventListener('resize', resizeCanvas);
