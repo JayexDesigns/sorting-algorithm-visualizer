@@ -80,6 +80,10 @@ for (let i = 0; i < buttons.length; ++i) {
                 state.sorting = true;
                 insertionSort(state, elements, draw);
                 break;
+            case "SELECTION":
+                state.sorting = true;
+                selectionSort(state, elements, draw);
+                break;
         }
     });
 }

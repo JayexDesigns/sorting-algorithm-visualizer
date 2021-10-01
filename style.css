@@ -20,6 +20,7 @@ body {
 }
 
 #controls {
+    height: 100%;
     position: absolute;
     top: 0%;
     left: 50%;
@@ -27,9 +28,9 @@ body {
     z-index: 1;
 }
 #controls > * {
-    margin: 1rem 0.5rem 0 0.5rem;
+    margin: 1rem 0.5rem;
     padding: 0.45rem 1rem;
-    background-color: #1a1a1a;
+    background-color: rgba(26, 26, 26, 0);
     border: 0.2rem solid #ffffff;
     font-size: 1.2rem;
     font-weight: 700;
@@ -39,4 +40,18 @@ body {
 #controls > *:hover {
     background-color: #ffffff;
     color: #1a1a1a;
+}
+#controls > input {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+
+
+
+
+*:focus {
+    outline: none;
 }
