@@ -6,8 +6,8 @@ const bubbleSort = async (state, elements, callback) => {
                 let tmp = elements[j];
                 elements[j] = elements[j+1];
                 elements[j+1] = tmp;
+                await callback(elements);
             }
-            await callback(elements);
         }
         await sleep(1);
     }
