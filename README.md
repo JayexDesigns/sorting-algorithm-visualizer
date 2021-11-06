@@ -1,3 +1,4 @@
+<h3 align="center"><img src='https://raw.githubusercontent.com/JayexDesigns/sorting-algorithm-visualizer/main/assets/logo.png' width='15%'></h3>
 <h1 align="center">Sorting Algorithm Visualizer</h1>
 <p align="center">Sorting algorithms can be visually represented and they're actually quite interesting to look at</p>
 <br/>
