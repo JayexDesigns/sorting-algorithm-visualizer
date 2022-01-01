@@ -89,6 +89,10 @@ for (let i = 0; i < buttons.length; ++i) {
                 state.sorting = true;
                 selectionSort(state, elements, draw);
                 break;
+            case "MERGE":
+                state.sorting = true;
+                mergeSort(state, elements, draw);
+                break;
         }
     });
 }

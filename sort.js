@@ -53,3 +53,61 @@ const selectionSort = async (state, elements, callback) => {
     }
     state.sorting = false;
 }
+
+
+
+const mergeSort = async (state, elements, callback) => {
+    const merge = async (callback, array, a, b) => {
+        let aCopy = {...a};
+        let index = aCopy.start;
+        let oldArray = [...array];
+
+        while (a.end-a.start > 0 && b.end-b.start > 0) {
+            if (oldArray[a.start] > oldArray[b.start]) {
+                array[index] = oldArray[b.start];
+                ++b.start;
+                ++index;
+                await callback(array);
+                await sleep(1);
+            }
+            else {
+                array[index] = oldArray[a.start];
+                ++a.start;
+                ++index;
+                await callback(array);
+                await sleep(1);
+            }
+        }
+
+        while (a.end-a.start > 0) {
+            array[index] = oldArray[a.start];
+            ++a.start;
+            ++index;
+            await callback(array);
+            await sleep(1);
+        }
+        while (b.end-b.start > 0) {
+            array[index] = oldArray[b.start];
+            ++b.start;
+            ++index;
+            await callback(array);
+            await sleep(1);
+        }
+
+        return array;
+    }
+
+    const sort = async (state, callback, array, start, end) => {
+        if (end-start == 1) return {start, end};
+
+        let arrayOne = await sort(state, callback, array, start, start + Math.floor((end-start)/2));
+        let arrayTwo = await sort(state, callback, array, start + Math.floor((end-start)/2), end);
+
+        if (state.sorting == false) return;
+        array = await merge(callback, array, arrayOne, arrayTwo);
+
+        return {start, end};
+    }
+
+    await sort(state, callback, elements, 0, elements.length);
+}
